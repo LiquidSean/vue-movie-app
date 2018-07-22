@@ -1,4 +1,4 @@
-const Sequelize = require("../../../../Library/Caches/typescript/2.9/node_modules/@types/sequelize");
+const Sequelize = require("sequelize");
 const RatingsModel = require("./models/ratings");
 const TitlesModel = require("./models/titles");
 const NamesModel = require("./models/names");
