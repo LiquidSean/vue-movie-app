@@ -6,7 +6,7 @@ var serveStatic = require("serve-static");
 const { Ratings, Names, Titles } = require("./sequelize");
 
 let app = express();
-app.use(serveStatic(path.join(__dirname, "dist")));
+app.use(serveStatic("./dist"));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -35,6 +35,8 @@ app.get("/api/names", (req, res) => {
 // });
 
 // Resets the database and launches the express app on :8081
-app.listen(8081, () => {
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => {
   console.log("listening to port localhost:8081");
 });
