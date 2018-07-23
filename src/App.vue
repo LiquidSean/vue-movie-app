@@ -27,6 +27,8 @@
     </v-navigation-drawer>
     <v-toolbar
       app
+      dark
+      color="primary"
       :clipped-left="clipped"
     >
       <v-btn icon @click.stop="miniVariant = !miniVariant">
@@ -37,8 +39,8 @@
     <v-content>
       <router-view/>
     </v-content>
-    <v-footer :fixed="fixed" app>
-      <span>&copy; 2017</span>
+    <v-footer color="" :fixed="fixed" app>
+      <span>&copy; 2018</span>
     </v-footer>
   </v-app>
 </template>
@@ -72,7 +74,7 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Movies DB'
     }
   }
 }
