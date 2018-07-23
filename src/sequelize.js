@@ -1,7 +1,8 @@
-const Sequelize = require("../../../../Library/Caches/typescript/2.9/node_modules/@types/sequelize");
+const Sequelize = require("sequelize");
 const RatingsModel = require("./models/ratings");
 const TitlesModel = require("./models/titles");
 const NamesModel = require("./models/names");
+const fs = require("fs");
 
 const sequelize = new Sequelize("innodb", "seanluthjohn", "%!#z%Unb{DA2", {
   dialect: "mysql",
@@ -10,11 +11,15 @@ const sequelize = new Sequelize("innodb", "seanluthjohn", "%!#z%Unb{DA2", {
   pool: {
     max: 10,
     min: 0,
-    acquire: 30000,
-    idle: 10000
+    idle: 1
   },
   define: {
     timestamps: false
+  },
+  dialectOptions: {
+    ssl: {
+      ca: fs.readFileSync("./config/amazon-rds-ca-cert.pem")
+    }
   }
 });
 

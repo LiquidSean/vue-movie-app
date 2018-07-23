@@ -1,9 +1,12 @@
-const express = require("../../../../Library/Caches/typescript/2.9/node_modules/@types/express");
-const cors = require("../../../../Library/Caches/typescript/2.9/node_modules/@types/cors");
-const bodyParser = require("../../../../Library/Caches/typescript/2.9/node_modules/@types/body-parser");
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+var path = require("path");
+var serveStatic = require("serve-static");
 const { Ratings, Names, Titles } = require("./sequelize");
 
 let app = express();
+app.use(serveStatic("./dist"));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -32,6 +35,8 @@ app.get("/api/names", (req, res) => {
 // });
 
 // Resets the database and launches the express app on :8081
-app.listen(8081, () => {
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => {
   console.log("listening to port localhost:8081");
 });

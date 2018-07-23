@@ -8,7 +8,7 @@
                             <v-spacer></v-spacer>
                     </v-toolbar>
                     <v-card-text>
-                        <DataTable :items='items' :fields='fields'/>
+                        <DataTable :items='ratings' :fields='fields'/>
                     </v-card-text>
                     <v-card-actions>
                             
@@ -33,7 +33,19 @@ export default {
             }]
         }
     },
-    components: { DataTable } 
+    computed: {
+        ratings() {
+            return this.$store.getters["ratings/ratings"];
+        }
+    },
+    components: { DataTable },
+    created() {
+        this.$store
+      .dispatch("ratings/getRatings", {
+      }).then(() => {
+          this.loading = false;
+      })
+    }
 
 }
 </script>

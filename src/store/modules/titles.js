@@ -18,7 +18,7 @@ export default {
     async getTitles({ commit }, payload) {
       return new Promise((resolve, reject) =>
         HTTP.get("titles").then(response => {
-          commit("setTitles", response);
+          commit("setTitles", response.data);
           return resolve();
         })
       );
