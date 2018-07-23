@@ -10,8 +10,7 @@ const sequelize = new Sequelize("innodb", "seanluthjohn", "%!#z%Unb{DA2", {
   pool: {
     max: 10,
     min: 0,
-    acquire: 30000,
-    idle: 10000
+    idle: 1
   },
   define: {
     timestamps: false
