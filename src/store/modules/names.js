@@ -8,7 +8,7 @@ export default {
   },
   mutations: {
     setNames(state, payload) {
-      state.titles = payload;
+      state.names = payload;
     },
     addName(state, name) {
       state.names.push(name);
@@ -16,7 +16,12 @@ export default {
   },
   actions: {
     async getNames({ commit }, payload) {
-      return [];
+      return new Promise((resolve, reject) =>
+        HTTP.get("names").then(response => {
+          commit("setNames", response.data);
+          return resolve();
+        })
+      );
     },
     async saveName({ commit }, payload) {
       const self = this;

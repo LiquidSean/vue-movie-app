@@ -16,7 +16,12 @@ export default {
   },
   actions: {
     async getRatings({ commit }, payload) {
-      return [];
+      return new Promise((resolve, reject) =>
+        HTTP.get("ratings").then(response => {
+          commit("setRatings", response.data);
+          return resolve();
+        })
+      );
     },
     async saveRating({ commit }, payload) {
       const self = this;

@@ -11,13 +11,12 @@
           <v-data-table
             :headers="fields"
             :items="items"
+            :search="search"
           >
             <template
               slot="items"
               slot-scope="props">
-              <tr v-for="row in items">
-                <td v-for="col in fields">{{row[col.value]}}</td>
-              </tr>
+              <td v-for="value in props.item">{{value}}</td>
             </template>
 
           </v-data-table>
