@@ -2,6 +2,7 @@ const Sequelize = require("sequelize");
 const RatingsModel = require("./models/ratings");
 const TitlesModel = require("./models/titles");
 const NamesModel = require("./models/names");
+const fs = require('fs');
 
 const sequelize = new Sequelize("innodb", "seanluthjohn", "%!#z%Unb{DA2", {
   dialect: "mysql",
@@ -14,6 +15,11 @@ const sequelize = new Sequelize("innodb", "seanluthjohn", "%!#z%Unb{DA2", {
   },
   define: {
     timestamps: false
+  },
+  dialectOptions: {
+    ssl: {
+      ca: fs.readFileSync('./config/amazon-rds-ca-cert.pem')
+    }
   }
 });
 
