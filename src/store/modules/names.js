@@ -23,8 +23,15 @@ export default {
         })
       );
     },
+    async getFilteredNames({ commit }, payload) {
+      return new Promise((resolve, reject) =>
+        HTTP.get("names?find=").then(response => {
+          commit("setNames", response.data);
+          return resolve();
+        })
+      );
+    },
     async saveName({ commit }, payload) {
-      const self = this;
       return [];
     }
   },

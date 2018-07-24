@@ -34,43 +34,58 @@ app.get("/api/ratings", (req, res) => {
 });
 
 app.get("/api/titles", (req, res) => {
-  const title = req.query.primaryTitle;
-  const startYear = req.query.startYear;
-  let whereClause = {};
+  const find = req.query.find;
+  let whereClause = {
+    include: [
+      {
+        model: Ratings
+      }
+    ]
+  };
 
-  if (title && startYear) {
+  if (find) {
     whereClause = {
       where: {
-        primaryTitle: {
-          [Op.like]: `%${title}%`
-        },
-        startYear: {
-          [Op.eq]: startYear
+        $or: {
+          startYear: {
+            [Op.eq]: find
+          },
+          primaryTitle: {
+            [Op.like]: `%${find}%`
+          }
         }
-      }
-    };
-  } else if (title) {
-    whereClause = {
-      where: {
-        primaryTitle: {
-          [Op.like]: `%${title}%`
+      },
+      include: [
+        {
+          model: Ratings
         }
-      }
-    };
-  } else if (startYear) {
-    whereClause = {
-      where: {
-        startYear: {
-          [Op.eq]: startYear
-        }
-      }
+      ]
     };
   }
-  return Titles.findAll(whereClause).then(titles => res.json(titles));
+  return Titles.findAll(whereClause).then(titles => {
+    const resObj = titles.map(title => {
+      return Object.assign(
+        {},
+        {
+          tconst: title.tconst,
+          titleType: title.titleType,
+          primaryTitle: title.primaryTitle,
+          originalTitle: title.originalTitle,
+          startYear: title.primaryTitle,
+          endYear: title.originalTitle,
+          runtimeMinutes: title.runtimeMinutes,
+          genres: title.genres,
+          numVotes: title.rating && title.rating.numVotes,
+          averageRating: title.rating && title.rating.averageRating
+        }
+      );
+    });
+    return res.json(resObj);
+  });
 });
 
 app.get("/api/names", (req, res) => {
-  const name = req.query.primaryName;
+  const name = req.query.find;
   let whereClause = {};
 
   if (name) {

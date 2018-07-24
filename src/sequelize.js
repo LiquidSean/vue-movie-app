@@ -34,6 +34,9 @@ const Ratings = RatingsModel(sequelize, Sequelize);
 const Titles = TitlesModel(sequelize, Sequelize);
 const Names = NamesModel(sequelize, Sequelize);
 
+Titles.hasOne(Ratings, { foreignKey: "tconst" });
+Ratings.belongsTo(Titles, { foreignKey: "tconst" });
+
 sequelize.sync({ force: false }).then(() => {
   console.log(`Database & tables created!`);
 });

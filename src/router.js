@@ -5,6 +5,7 @@ import Names from "./views/Names.vue";
 import Titles from "./views/Titles.vue";
 import Ratings from "./views/Ratings.vue";
 import New from "./views/New.vue";
+import Find from "./views/Find.vue";
 
 Vue.use(Router);
 
@@ -34,6 +35,11 @@ export default new Router({
       path: "/new",
       name: "new",
       component: New
+    },
+    {
+      path: "/find",
+      name: "find",
+      component: Find
     }
   ]
 });

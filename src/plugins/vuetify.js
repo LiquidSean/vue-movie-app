@@ -17,7 +17,8 @@ import {
   VTooltip,
   VDataTable,
   VDivider,
-  VDialog
+  VDialog,
+  VRadioGroup
 } from "vuetify";
 import "vuetify/src/stylus/app.styl";
 
@@ -39,7 +40,8 @@ Vue.use(Vuetify, {
     VTooltip,
     VDataTable,
     VDivider,
-    VDialog
+    VDialog,
+    VRadioGroup
   },
   theme: {
     primary: "#ee44aa",

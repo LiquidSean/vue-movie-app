@@ -23,8 +23,15 @@ export default {
         })
       );
     },
+    async getFilteredTitles({ commit }, payload) {
+      return new Promise((resolve, reject) =>
+        HTTP.get("titles?find=").then(response => {
+          commit("setTitles", response.data);
+          return resolve();
+        })
+      );
+    },
     async saveTitle({ commit }, payload) {
-      const self = this;
       return [];
     }
   },
