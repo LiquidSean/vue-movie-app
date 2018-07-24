@@ -3,6 +3,8 @@ const RatingsModel = require("./models/ratings");
 const TitlesModel = require("./models/titles");
 const NamesModel = require("./models/names");
 const fs = require("fs");
+// Use dotenv to read .env vars into Node
+require("dotenv").config();
 
 const sequelize = new Sequelize(
   process.env.DB_NAME,
