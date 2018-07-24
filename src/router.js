@@ -4,6 +4,7 @@ import Home from "./views/Home.vue";
 import Names from "./views/Names.vue";
 import Titles from "./views/Titles.vue";
 import Ratings from "./views/Ratings.vue";
+import New from "./views/New.vue";
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ export default new Router({
       path: "/names",
       name: "names",
       component: Names
+    },
+    {
+      path: "/new",
+      name: "new",
+      component: New
     }
   ]
 });

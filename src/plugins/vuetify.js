@@ -15,7 +15,9 @@ import {
   VTextField,
   VSelect,
   VTooltip,
-  VDataTable
+  VDataTable,
+  VDivider,
+  VDialog
 } from "vuetify";
 import "vuetify/src/stylus/app.styl";
 
@@ -35,7 +37,9 @@ Vue.use(Vuetify, {
     VTextField,
     VSelect,
     VTooltip,
-    VDataTable
+    VDataTable,
+    VDivider,
+    VDialog
   },
   theme: {
     primary: "#ee44aa",
