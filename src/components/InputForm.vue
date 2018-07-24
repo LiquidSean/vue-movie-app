@@ -24,9 +24,10 @@
                               placeholder="1886"
                               required></v-text-field>
                 <star-rating v-model="model.rating"
-                             :increment="0.01"
-                             :star-size="20"
+                             :increment="0.5"
+                             :star-size="40"
                              :border-width="3"
+                             :rounded-corners="true"
                              :fixed-points="2"></star-rating>
                 <v-text-field ref="model.numVotes"
                               v-model="model.numVotes"
