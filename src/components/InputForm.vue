@@ -79,10 +79,10 @@ export default {
       dialog: false,
       model: {
         title: "",
-        start: 0,
-        end: 0,
-        rating: 0,
-        numVotes: 0
+        start: null,
+        end: null,
+        rating: null,
+        numVotes: null
       },
       items: [],
       fields: [],

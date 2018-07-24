@@ -35,14 +35,15 @@
     </v-toolbar>
     <v-content>
       <router-view/>
-      <v-btn relative
+      <v-btn v-show="show"
+             relative
              absolute
              bottom
              dark
              fab
              top
              right
-             color="pink"
+             color="accent"
              to="/new">
         <v-tooltip bottom>
           <v-icon slot="activator">add</v-icon>
@@ -104,6 +105,16 @@ export default {
   },
   destroyed() {
     window.removeEventListener("resize", this.onResize);
+  },
+  computed: {
+    show() {
+      // Check if given route is true, if it is then hide btn.
+      if (this.$route.path === "/new") {
+        return false;
+      } else {
+        return true;
+      }
+    }
   },
   methods: {
     toggleDrawer() {
