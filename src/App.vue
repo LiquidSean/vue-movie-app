@@ -67,8 +67,8 @@ export default {
   name: "App",
   data() {
     return {
-      clipped: false,
-      drawer: true,
+      clipped: true,
+      drawer: isMobile() ? false : true,
       fixed: false,
       items: [
         {
@@ -92,7 +92,7 @@ export default {
           link: "/ratings"
         }
       ],
-      miniVariant: false,
+      miniVariant: true,
       right: true,
       rightDrawer: false,
       title: "Movies DB",
