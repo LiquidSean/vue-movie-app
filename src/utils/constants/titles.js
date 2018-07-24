@@ -20,11 +20,6 @@ const gridFields = [
     text: "Original Title"
   },
   {
-    value: "isAdult",
-    sortable: true,
-    text: "Adult Film"
-  },
-  {
     value: "startYear",
     sortable: true,
     text: "Start Year"
@@ -43,6 +38,16 @@ const gridFields = [
     value: "genres",
     sortable: true,
     text: "Genres"
+  },
+  {
+    value: "numVotes",
+    sortable: true,
+    text: "Votes"
+  },
+  {
+    value: "averageRating",
+    sortable: true,
+    text: "Average Rating"
   },
 ];
 
