@@ -39,6 +39,7 @@ export default new Router({
     {
       path: "/find",
       name: "find",
+      props: route => ({ term: route.query.term }),
       component: Find
     }
   ]

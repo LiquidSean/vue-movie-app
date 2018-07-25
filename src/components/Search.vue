@@ -13,12 +13,12 @@
                     <v-card-text>
                         <v-form>
                             <v-tooltip bottom>
-                                <v-text-field v-model="msg"
+                                <v-text-field v-model="term"
                                               solo
-                                              label="Enter a title, celebrity, or year a movie was released."
+                                              :label="placeholderText"
                                               clearable
                                               slot="activator"></v-text-field>
-                                <span>Enter a title, celbrity, or year a movie was released.</span>
+                                <span>{{placeholderText}}</span>
                             </v-tooltip>
                         </v-form>
                     </v-card-text>
@@ -38,11 +38,22 @@ export default {
   name: "Search",
   data: function() {
     return {
-      msg: ""
+      term: "",
+      option: "title"
     };
   },
+  computed: {
+      placeholderText() {
+          if (this.option === "title") {
+              return "Enter a title, or year the movie was released.";
+          }
+          return "Enter a celebrities name";
+      }
+  },
   methods: {
-    submit() {}
+    submit() {
+			this.$router.push({ path: `find?term=${this.term}` })
+		}
   }
 };
 </script>

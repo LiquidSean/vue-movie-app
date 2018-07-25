@@ -23,7 +23,7 @@ export default {
   name: "DataTable",
   data: function() {
     return {
-      search: ""
+      search: null
     };
   },
   props: ["fields", "items"],

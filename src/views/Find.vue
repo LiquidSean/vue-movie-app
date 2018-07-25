@@ -1,20 +1,20 @@
 <template>
   <v-container fluid>
-    <Names />
+    <Names :searchTerm="term"/>
     <v-spacer></v-spacer>
-    <Titles />
+    <Titles :searchTerm="term"/>
   </v-container>
 </template>
 
 <script>
 import Titles from "./Titles.vue";
 import Names from "./Names.vue";
+import titlesGridFields from "../utils/constants/titles.js";
+import namesGridFields from "../utils/constants/names.js";
 
 export default {
   name: "Find",
-  data() {
-    return {};
-  },
-  components: { Titles, Names }
+  props: ["term"],
+  components: { Titles, Names },
 };
 </script>

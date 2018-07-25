@@ -43,7 +43,7 @@ app.get("/api/titles", (req, res) => {
     ]
   };
 
-  if (find) {
+  if (find && find !== "undefined") {
     whereClause = {
       where: {
         $or: {
@@ -88,7 +88,7 @@ app.get("/api/names", (req, res) => {
   const name = req.query.find;
   let whereClause = {};
 
-  if (name) {
+  if (name && name !== "undefined") {
     whereClause = {
       where: {
         primaryName: {

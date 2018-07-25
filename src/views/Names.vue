@@ -47,6 +47,7 @@ export default {
       loading: true
     };
   },
+  props: ['searchTerm'],
   computed: {
     names() {
       return this.$store.getters["names/names"];
@@ -54,7 +55,7 @@ export default {
   },
   components: { DataTable },
   created() {
-    this.$store.dispatch("names/getNames", {}).then(() => {
+    this.$store.dispatch("names/getNames", { find: this.searchTerm }).then(() => {
       this.loading = false;
     });
   }

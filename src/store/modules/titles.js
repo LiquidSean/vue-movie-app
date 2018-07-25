@@ -1,4 +1,3 @@
-import Vue from "vue";
 import { HTTP } from "../http-common";
 
 export default {
@@ -17,15 +16,7 @@ export default {
   actions: {
     async getTitles({ commit }, payload) {
       return new Promise((resolve, reject) =>
-        HTTP.get("titles").then(response => {
-          commit("setTitles", response.data);
-          return resolve();
-        })
-      );
-    },
-    async getFilteredTitles({ commit }, payload) {
-      return new Promise((resolve, reject) =>
-        HTTP.get("titles?find=").then(response => {
+        HTTP.get(`titles?find=${payload.find}`).then(response => {
           commit("setTitles", response.data);
           return resolve();
         })

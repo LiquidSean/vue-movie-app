@@ -42,6 +42,7 @@ export default {
       fields: gridFields
     };
   },
+  props: ['searchTerm'],
   computed: {
     titles() {
       return this.$store.getters["titles/titles"];
@@ -49,7 +50,7 @@ export default {
   },
   components: { DataTable },
   created() {
-    this.$store.dispatch("titles/getTitles", {}).then(() => {
+    this.$store.dispatch("titles/getTitles", { find: this.searchTerm }).then(() => {
       this.loading = false;
     });
   }
