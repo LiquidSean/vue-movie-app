@@ -6,6 +6,8 @@ import Titles from "./views/Titles.vue";
 import Ratings from "./views/Ratings.vue";
 import New from "./views/New.vue";
 import Find from "./views/Find.vue";
+import Name from "./views/Name.vue";
+import Title from "./views/Title.vue";
 
 Vue.use(Router);
 
@@ -30,6 +32,16 @@ export default new Router({
       path: "/names",
       name: "names",
       component: Names
+    },
+    {
+      path: "/titles/:id",
+      name: "title",
+      component: Title
+    },
+    {
+      path: "/names/:id",
+      name: "name",
+      component: Name
     },
     {
       path: "/new",

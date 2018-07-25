@@ -29,6 +29,10 @@ const gridFields = [
     sortable: true,
     text: "Known For"
   },
+  {
+    sortable: false,
+    text: "Actions"
+  }
 ];
 
 export default gridFields;

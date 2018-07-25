@@ -49,6 +49,10 @@ const gridFields = [
     sortable: true,
     text: "Average Rating"
   },
+  {
+    sortable: false,
+    text: "Actions"
+  }
 ];
 
 export default gridFields;

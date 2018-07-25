@@ -1,16 +1,17 @@
 <template>
     <v-container v-if="loading"
                  fluid>
+                 <v-layout justify-center align-center>
         <font-awesome-icon spin
                            icon="spinner"
                            size="5x" />
+                           </v-layout>
     </v-container>
     <v-container v-else
                  fluid>
         <v-layout align-center
                   justify-center>
-            <v-flex xs12
-                    sm6>
+            <v-flex xs12>
                 <v-card class="elevation-12">
                     <v-toolbar dark
                                color="primary">
@@ -18,8 +19,9 @@
                         <v-spacer></v-spacer>
                     </v-toolbar>
                     <v-card-text>
-                        <DataTable :items='names'
-                                   :fields='fields' />
+                        <DataTable :items="names"
+                                   :fields="fields"
+                                   :type="type" />
                     </v-card-text>
                     <v-card-actions>
 
@@ -38,6 +40,7 @@ export default {
   name: "Names",
   data: function() {
     return {
+      type: "names",
       fields: gridFields,
       items: [
         {
