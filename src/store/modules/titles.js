@@ -16,10 +16,12 @@ export default {
   actions: {
     async getTitles({ commit }, payload) {
       return new Promise((resolve, reject) =>
-        HTTP.get(`titles?find=${payload.find}`).then(response => {
-          commit("setTitles", response.data);
-          return resolve();
-        })
+        HTTP.get(`titles?find=${payload.find}`)
+          .then(response => {
+            commit("setTitles", response.data);
+            return resolve();
+          })
+          .catch(err => reject(err))
       );
     },
     async saveTitle({ commit }, payload) {

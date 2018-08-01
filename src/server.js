@@ -76,7 +76,7 @@ app.get("/api/titles", (req, res) => {
           runtimeMinutes: title.runtimeMinutes,
           genres: title.genres,
           numVotes: title.rating && title.rating.numVotes,
-          averageRating: title.rating && title.rating.averageRating
+          averageRating: title.rating && parseFloat(title.rating.averageRating)
         }
       );
     });

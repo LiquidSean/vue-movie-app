@@ -19,7 +19,7 @@
                         <v-spacer></v-spacer>
                     </v-toolbar>
                     <v-card-text>
-                        <DataTable :items="names"
+                        <DataTable :items="filteredNames"
                                    :fields="fields"
                                    :type="type" />
                     </v-card-text>
@@ -50,10 +50,17 @@ export default {
       loading: true
     };
   },
-  props: ['searchTerm'],
+  props: ['searchTerm', 'ids'],
   computed: {
     names() {
       return this.$store.getters["names/names"];
+    },
+    filteredNames() {
+      if (!this.ids) {
+        return this.names;
+      }
+      const idArray = this.ids.split(',');
+      return this.names.filter((name) => idArray.includes(name.nconst));
     }
   },
   components: { DataTable },

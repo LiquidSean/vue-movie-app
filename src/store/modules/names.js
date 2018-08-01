@@ -16,10 +16,12 @@ export default {
   actions: {
     async getNames({ commit }, payload) {
       return new Promise((resolve, reject) =>
-        HTTP.get(`names?find=${payload.find}`).then(response => {
-          commit("setNames", response.data);
-          return resolve();
-        })
+        HTTP.get(`names?find=${payload.find}`)
+          .then(response => {
+            commit("setNames", response.data);
+            return resolve();
+          })
+          .catch(err => reject(err))
       );
     },
     async saveName({ commit }, payload) {
